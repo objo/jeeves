@@ -1,12 +1,17 @@
 require 'sinatra'
+require './lib/syntax'
 
 get '/' do
   erb :index
 end
 
+get '/spongebob' do
+  Syntax.spongebob
+end
+
 post '/analyze' do
-  content_type :json
-  freeling(params['question'])
+  @raw_data = freeling(params['question'])
+  erb :result
 end
 
 
