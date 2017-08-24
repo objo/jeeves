@@ -22,9 +22,8 @@ require 'pp'
 
 def freeling(question)
   headers = { 'content-type' => 'application/json' }
-  url = 'http://localhost:9999/analyzer-api'
-  content = { 'content' => question }
-# HTTParty.post(url, :body => { :content => the_string }.to_json, :headers => headers)
+  url = 'http://localhost:8000/dep'
+  content = { 'text' => question, 'model' => 'en' }
   res = HTTParty.post(url, :body => content.to_json, :headers => headers)
   res.body
 end
